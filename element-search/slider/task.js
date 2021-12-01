@@ -2,6 +2,7 @@ const images = [...document.querySelectorAll(".slider__item")];
 const arrows = document.querySelectorAll(".slider__arrow");
 const dots = [...document.querySelectorAll(".slider__dot")];
 
+
 let itemIndex;
 
 const findItemIndex = () => {
