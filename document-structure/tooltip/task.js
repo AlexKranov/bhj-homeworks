@@ -1,17 +1,17 @@
-const hasTooltip = Array.from(document.getElementsByClassName("has-tooltip"));
-hasTooltip.forEach(element => element.addEventListener("click", hasTooltipClick));
+const has_tooltip = Array.from(document.getElementsByClassName("has-tooltip"));
+has_tooltip.forEach(element => element.addEventListener("click", hasTooltipClick));
 
 function hasTooltipClick(event) {
     event.preventDefault();
 
-    const tooltipDiv = document.querySelector(".tooltip");
-    if (tooltipDiv) {
+    const hinttext = document.querySelector(".tooltip");
+    if (hinttext) {
 
-        if (tooltipDiv === event.target.nextElementSibling) {
-            tooltipDiv.remove();
+        if (hinttext === event.target.nextElementSibling) {
+            hinttext.remove();
             return;
         } else {
-            tooltipDiv.remove();
+            hinttext.remove();
         }
     }
 
