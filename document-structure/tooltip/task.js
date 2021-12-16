@@ -1,21 +1,23 @@
-function tooltip() {
-    const links = document.querySelectorAll('.has-tooltip');
-    for (const link of links) {
-        link.addEventListener('click', tooltip);
-    };
+const hasTooltip = Array.from(document.getElementsByClassName("has-tooltip"));
+hasTooltip.forEach(element => element.addEventListener("click", hasTooltipClick));
 
-    function tooltip(event) {
-        event.preventDefault();
-        const link = event.target;
-        if (link.querySelector('.tooltip')) {
-            link.querySelector('.tooltip').classList.toggle('tooltip_active');
+function hasTooltipClick(event) {
+    event.preventDefault();
+
+    const tooltipDiv = document.querySelector(".tooltip");
+    if (tooltipDiv) {
+
+        if (tooltipDiv === event.target.nextElementSibling) {
+            tooltipDiv.remove();
+            return;
         } else {
-            const tooltip = document.createElement('div');
-            tooltip.textContent = link.getAttribute('title');
-            tooltip.classList.add('tooltip', 'tooltip_active');
-            link.insertAdjacentElement('beforeEnd', tooltip);
+            tooltipDiv.remove();
         }
-    };
-};
+    }
 
-document.addEventListener('DOMContentLoaded', tooltip);
+    const titleTooltip = this.title;
+    const elementRect = this.getBoundingClientRect();
+    const leftTooltip = elementRect.left;
+    const topTooltip = elementRect.top + elementRect.height;
+    this.insertAdjacentHTML("afterEnd", `<div class="tooltip tooltip_active" style="left: ${leftTooltip}px; top: ${topTooltip}px">${titleTooltip}</div>`);
+}
